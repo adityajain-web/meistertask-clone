@@ -9,7 +9,6 @@ import authMiddleware from '@/middleware'
 
 const Auth = ({ authToken }) => {
     const [switchForm, setSwitchForm] = useState('reg')
-    const router = useRouter()
 
     const handleFormSwitch = (form) => {
         setSwitchForm(form)

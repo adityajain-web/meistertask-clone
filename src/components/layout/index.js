@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Sidebar, Topbar } from '..'
 
-const index = () => {
+const index = ({ handleOpenEditDashboard }) => {
     const [openSidebar, setOpenSidebar] = useState(false)
 
     const handleOpenSidebar = (o) => {
@@ -11,7 +11,7 @@ const index = () => {
     return (
         <>
             <Topbar openSidebar={openSidebar} handleOpenSidebar={handleOpenSidebar} />
-            <Sidebar openSidebar={openSidebar} />
+            <Sidebar openSidebar={openSidebar} handleOpenEditDashboard={handleOpenEditDashboard} />
         </>
     )
 }

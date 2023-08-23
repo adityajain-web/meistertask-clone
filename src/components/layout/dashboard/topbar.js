@@ -51,8 +51,6 @@ const topbar = ({ handleOpenSidebar, openSidebar }) => {
         };
     }
 
-    console.log(user)
-
     const handleLogout = () => {
         dispatch(handleUserLogout())
         router.push('/auth')

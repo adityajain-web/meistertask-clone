@@ -178,10 +178,22 @@ p {
 }
 
 .dashboard-main .dashboard-container {
-  padding: 4.6rem 0 1rem 4.6rem;
+  padding: 4.6rem 0 0rem 4.6rem;
   height: 100vh;
   overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+.dashboard-board {
+  overflow-y: hidden;
   overflow-x: auto;
+  white-space: nowrap;
+  display: flex;
+  height: 100%;
+}
+
+.dashboard-main .dashboard-container .dashboard-board::-webkit-scrollbar {
+  display: none;
 }
 
 .dashboard-slidebar {
@@ -204,6 +216,12 @@ p {
 
 .dashboard-slidebar.show {
   width: 20%;
+}
+
+.dashboard-column {
+  width: 360px;
+  flex-shrink: 0;
+  margin: 1rem 1rem 0rem 0rem;
 }
 
 @media only screen and (max-width: 600px) {

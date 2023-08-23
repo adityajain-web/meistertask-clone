@@ -1,16 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { parse } from 'cookie';
-import { useRouter } from 'next/router';
 import authMiddleware from '@/middleware';
 import { useDispatch, useSelector } from 'react-redux';
 import { handleGetDataFromToken, handleGetUserData } from '@/redux/action/userActions';
-import { Layout } from '@/components';
-import { Box, Button, Container, Dialog, DialogContent, TextField, Typography } from '@mui/material';
-import { handleAddDashColumn } from '@/redux/action/dashboardAction';
+import { Board, Column, EditDashboardModal, Layout } from '@/components';
+import { Box, Container } from '@mui/material';
 
 
 const index = ({ authToken }) => {
-  const [listName, setListName] = useState("")
+  const [openEditDashboardModal, setOpenEditDashboardModal] = useState(false)
   const { decodedToken } = useSelector(state => state.authTokenReducer)
   const dispatch = useDispatch()
 
@@ -26,34 +24,19 @@ const index = ({ authToken }) => {
     }
   }, [authToken, decodedToken])
 
-  const handleAddColumn = (e) => {
-    e.preventDefault()
-    dispatch(handleAddDashColumn(listName))
+  const handleOpenEditDashboard = (o) => {
+    setOpenEditDashboardModal(o)
   }
 
   return (
     <>
-      <Layout />
+      <Layout handleOpenEditDashboard={handleOpenEditDashboard} />
       <section className='dashboard-main'>
         <Container maxWidth="xxl" className='dashboard-container'>
-
+          <Board />
         </Container>
       </section>
-      <Dialog maxWidth="xs" fullWidth open={true}>
-        <DialogContent>
-          <Typography variant='h4'>Edit Board</Typography>
-          <Box mt={2}>
-            <form onSubmit={handleAddColumn}>
-              <Box mb={2}>
-                <TextField variant='outlined' label="List Name" name="listName" fullWidth value={listName} onChange={(e) => setListName(e.target.value)} required />
-              </Box>
-              <Box>
-                <Button type='submit' variant='contained' className='primary-button' fullWidth size='large' >Add</Button>
-              </Box>
-            </form>
-          </Box>
-        </DialogContent>
-      </Dialog>
+      <EditDashboardModal handleOpenEditDashboard={handleOpenEditDashboard} openEditDashboardModal={openEditDashboardModal} />
     </>
   )
 }
