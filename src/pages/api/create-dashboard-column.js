@@ -9,9 +9,9 @@ export default async function handler(req, res) {
     try {
         await connectDB();
 
-        const { listName } = JSON.parse(req.body);
+        const { listName, listColor } = JSON.parse(req.body);
 
-        const newList = new List({ listName: listName });
+        const newList = new List({ listName, listColor });
 
         await newList.save();
 

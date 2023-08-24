@@ -224,6 +224,10 @@ p {
   margin: 1rem 1rem 0rem 0rem;
 }
 
+.MuiDialog-container .MuiDialog-paper {
+  height: 550px;
+}
+
 @media only screen and (max-width: 600px) {
   .dashboard-topbar .logo {
     width: 46%;
@@ -239,5 +243,9 @@ p {
 
   .dashboard-slidebar.show {
     width: 90%;
+  }
+
+  .MuiDialog-container .MuiDialog-paper {
+    height: auto;
   }
 }

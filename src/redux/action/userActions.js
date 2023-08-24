@@ -63,3 +63,13 @@ export const handleGetUserData = (id) => async (dispatch) => {
         dispatch({ type: actionTypes.GET_USER_FAILURE })
     }
 }
+
+export const handleFetchAllUsers = () => async (dispatch) => {
+    try {
+        const response = await fetch('/api/get-users')
+        const { users } = await response.json()
+        dispatch({ type: actionTypes.GET_USERS_SUCCESS, payload: users })
+    } catch (error) {
+        dispatch({ type: actionTypes.GET_USERS_FAILURE })
+    }
+}

@@ -1,8 +1,8 @@
 import actionTypes from "./actionTypes";
 
-export const handleAddDashColumn = (listName) => async (dispatch) => {
+export const handleAddDashColumn = (newList) => async (dispatch) => {
     try {
-        const response = await fetch('/api/create-dashboard-column', { method: "POST", body: JSON.stringify({ listName }) })
+        const response = await fetch('/api/create-dashboard-column', { method: "POST", body: JSON.stringify(newList) })
         dispatch({ type: actionTypes.ADD_DASHBOARD_COLUMN_SUCCESS })
     } catch (error) {
         dispatch({ type: actionTypes.ADD_DASHBOARD_COLUMN_FAILURE })
@@ -25,5 +25,14 @@ export const handleDeleteDashboardColumn = (_id) => async (dispatch) => {
         dispatch({ type: actionTypes.DELETE_DASHBOARD_COLUMN_SUCCESS })
     } catch (error) {
         dispatch({ type: actionTypes.DELETE_DASHBOARD_COLUMN_FAILURE })
+    }
+}
+
+export const handleAddTask = (newTaskData) => async (dispatch) => {
+    try {
+        const response = await fetch('/api/create-task', { method: "POST", body: JSON.stringify({ newTaskData }) })
+        dispatch({ type: actionTypes.CREATE_TASK_SUCCESS })
+    } catch (error) {
+        dispatch({ type: actionTypes.CREATE_TASK_FAILURE })
     }
 }

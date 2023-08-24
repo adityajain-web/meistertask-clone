@@ -26,6 +26,12 @@ export const dashboardReducer = (state = initialState, { type, payload }) => {
         case actionTypes.DELETE_DASHBOARD_COLUMN_FAILURE:
             return { ...state, message: "delete failed", error: true }
 
+        case actionTypes.CREATE_TASK_SUCCESS:
+            return { ...state, message: "task added suucessfully", error: false }
+
+        case actionTypes.CREATE_TASK_FAILURE:
+            return { ...state, message: "failed to add task.", error: true }
+
         default:
             return state
     }
