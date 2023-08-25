@@ -32,6 +32,18 @@ export const dashboardReducer = (state = initialState, { type, payload }) => {
         case actionTypes.CREATE_TASK_FAILURE:
             return { ...state, message: "failed to add task.", error: true }
 
+        case actionTypes.UPDATE_TASK_ORDER_SAME_COLUMN_SUCCESS:
+            return { ...state, message: "task order is updated", error: false }
+
+        case actionTypes.UPDATE_TASK_ORDER_SAME_COLUMN_FAILURE:
+            return { ...state, message: "failed to update task order" }
+
+        case actionTypes.UPDATE_TASK_FROM_SOURCE_TO_DESTINATION_SUCCESS:
+            return { ...state, message: "Task updated successfully.", error: false }
+
+        case actionTypes.UPDATE_TASK_FROM_SOURCE_TO_DESTINATION_FAILURE:
+            return { ...state, message: "Failed to update task.", error: true }
+
         default:
             return state
     }

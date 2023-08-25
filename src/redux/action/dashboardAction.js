@@ -36,3 +36,21 @@ export const handleAddTask = (newTaskData) => async (dispatch) => {
         dispatch({ type: actionTypes.CREATE_TASK_FAILURE })
     }
 }
+
+export const handleUpdateTaskOrderSameColumn = (updatedColumns) => async (dispatch) => {
+    try {
+        const response = await fetch('/api/update-task-order-same-colum', { method: "POST", body: JSON.stringify({ updatedColumns }) })
+        dispatch({ type: actionTypes.UPDATE_TASK_ORDER_SAME_COLUMN_SUCCESS })
+    } catch (error) {
+        dispatch({ type: actionTypes.UPDATE_TASK_ORDER_SAME_COLUMN_FAILURE })
+    }
+}
+
+export const handleMoveTaskFromSourceToAnotherDestination = (updatedColumns) => async (dispatch) => {
+    try {
+        const response = await fetch('/api/update-task-source-and-destination', { method: "POST", body: JSON.stringify({ updatedColumns }) });
+        dispatch({ type: actionTypes.UPDATE_TASK_FROM_SOURCE_TO_DESTINATION_SUCCESS })
+    } catch (error) {
+        dispatch({ type: actionTypes.UPDATE_TASK_FROM_SOURCE_TO_DESTINATION_FAILURE })
+    }
+}

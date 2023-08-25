@@ -37,6 +37,7 @@ body {
   min-height: 100vh;
   width: 100%;
   overflow-x: hidden;
+  background-color: var(--color-secondary);
 }
 
 h1,
@@ -170,11 +171,11 @@ p {
   right: 0;
   width: 100%;
   z-index: 9999;
-  background-color: #fff;
+  background-color: var(--color-muted) !important;
 }
 
 .dashboard-topbar .logo {
-  width: 15%;
+  width: 50%;
 }
 
 .dashboard-main .dashboard-container {
@@ -201,7 +202,7 @@ p {
   height: 100vh;
   padding-top: 4.6rem;
   position: absolute;
-  background-color: #fff;
+  background-color: var(--color-muted) !important;
   z-index: 9998;
   transition: all 0.5s ease;
   -webkit-transition: all 0.5s ease;
@@ -222,10 +223,35 @@ p {
   width: 360px;
   flex-shrink: 0;
   margin: 1rem 1rem 0rem 0rem;
+  background-color: var(--color-muted) !important;
+  border: 1px solid #ffffff40;
 }
 
 .MuiDialog-container .MuiDialog-paper {
   height: 550px;
+}
+
+.Toastify__toast-container--top-right {
+  top: 6em !important;
+}
+
+.dashboard-droppable {
+  min-height: 50px;
+  max-height: 450px;
+  overflow-y: auto;
+  padding: 0.5rem;
+}
+
+.dashboard-droppable::-webkit-scrollbar {
+  width: 5px;
+}
+
+.dashboard-droppable::-webkit-scrollbar-thumb {
+  background-color: #b2db31;
+}
+
+.dashboard-task-card {
+  background-color: #090909 !important;
 }
 
 @media only screen and (max-width: 600px) {
@@ -247,5 +273,9 @@ p {
 
   .MuiDialog-container .MuiDialog-paper {
     height: auto;
+  }
+
+  .dashboard-droppable {
+    max-height: 390px;
   }
 }

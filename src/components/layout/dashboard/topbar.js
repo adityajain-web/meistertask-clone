@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Avatar, Box, Button, Container, IconButton, List, ListItem, ListItemIcon, ListItemText, Popover, Typography } from '@mui/material'
 import { Close, ExitToApp, Menu, Person, Settings, TvOff } from '@mui/icons-material'
-import Logo from '@/images/black-logo.png'
+import Logo from '@/images/logo.png'
 import { useSelector, useDispatch } from 'react-redux'
 import { handleUserLogout } from '@/redux/action/userActions'
 import { useRouter } from 'next/router'
@@ -62,7 +62,7 @@ const topbar = ({ handleOpenSidebar, openSidebar }) => {
                 <Container maxWidth="xxl">
                     <Box py={2} className="d-flex">
                         <Box>
-                            <IconButton className='me-3' onClick={() => handleOpenSidebar(!openSidebar)}>{openSidebar ? <Close className='text--secondary' /> : <Menu className='text--secondary' />}</IconButton>
+                            <IconButton className='me-3' onClick={() => handleOpenSidebar(!openSidebar)}>{openSidebar ? <Close className='text-white' /> : <Menu className='text-white' />}</IconButton>
                             <img src={Logo.src} alt="Logo" className='img-fluid logo' />
                         </Box>
                         <Box sx={{ flexGrow: 1 }} />

@@ -7,13 +7,13 @@ const sidebar = ({ openSidebar, handleOpenEditDashboard }) => {
         <>
             <aside className={`dashboard-slidebar ${openSidebar ? 'show' : 'hide'} shadow`}>
                 <Box>
-                    <List disablePadding sx={{ display: 'block' }} className='border'>
+                    <List disablePadding sx={{ display: 'block' }} style={{ borderBottom: "1px solid #ffffff40" }}>
                         <ListItem className='px-0'>
                             <ListItemButton sx={{ justifyContent: openSidebar ? 'end' : 'center', }} onClick={() => handleOpenEditDashboard(true)}>
                                 <ListItemIcon sx={{ mr: openSidebar ? 3 : 'auto', justifyContent: 'center', minWidth: 0 }}>
-                                    <Edit />
+                                    <Edit className='text-white' />
                                 </ListItemIcon>
-                                <ListItemText primary={openSidebar ? 'Edit Board' : ''} />
+                                <ListItemText primary={openSidebar ? 'Edit Board' : ''} className='text-white' />
                             </ListItemButton>
                         </ListItem>
                     </List>

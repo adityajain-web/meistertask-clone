@@ -3,21 +3,21 @@ import { Box, Button, Card, CardContent, Chip, Divider, Paper, Typography } from
 import React from 'react'
 import { Draggable, Droppable } from 'react-beautiful-dnd'
 
-const Column = ({ title, color, taskCount, listId, tasks, handleOpenAddTaskModal }) => {
+const Column = ({ title, color, taskCount, listId, tasks, handleOpenAddTaskModal, handleOpenTaskDetailModal }) => {
     return (
         <>
-            <Card className='shadow-none border dashboard-column'>
+            <Card className='shadow-none dashboard-column'>
                 <CardContent sx={{ height: "100%" }}>
                     <Box>
-                        <Box className="d-flex justify-content-between align-items-center">
-                            <Typography variant='h4' gutterBottom>{title || 'List'}</Typography>
+                        <Box mb={2} className="d-flex justify-content-between align-items-center">
+                            <Typography variant='h4' gutterBottom className='text-white'>{title || 'List'}</Typography>
                             <Chip style={{ backgroundColor: color }} label={<strong>{taskCount}</strong>} />
                         </Box>
-                        <Divider className='bg--primary' />
+                        <Divider style={{ backgroundColor: "#ffffff40" }} />
                         <Box mt={2}>
                             <Droppable droppableId={listId.toString()} type="TASK">
                                 {(provided) => (
-                                    <Box ref={provided.innerRef} {...provided.droppableProps}>
+                                    <Box ref={provided.innerRef} {...provided.droppableProps} className="dashboard-droppable">
                                         {tasks && tasks !== null && tasks !== undefined && tasks.length > 0 && tasks.map((t, index) => (
                                             <Draggable key={t._id} draggableId={t._id} index={index}>
                                                 {(provided) => (
@@ -28,9 +28,10 @@ const Column = ({ title, color, taskCount, listId, tasks, handleOpenAddTaskModal
                                                         {...provided.draggableProps}
                                                         {...provided.dragHandleProps}
                                                         component={Paper}
-                                                        className='shadow'
+                                                        className='shadow-lg dashboard-task-card'
+                                                        onClick={() => handleOpenTaskDetailModal(true, listId, t._id)}
                                                     >
-                                                        <Typography variant='h5'>{t.taskName}</Typography>
+                                                        <Typography variant='h5' className='text-white'>{t.taskName}</Typography>
                                                     </Box>
                                                 )}
                                             </Draggable>
@@ -40,7 +41,7 @@ const Column = ({ title, color, taskCount, listId, tasks, handleOpenAddTaskModal
                                 )}
                             </Droppable>
                             <Box mt={2}>
-                                <Button variant='contained' className='btn btn-light' onClick={() => handleOpenAddTaskModal(true, listId)}><Add className='me-3' /> Add More Task</Button>
+                                <Button variant='contained' className='btn primary-button' onClick={() => handleOpenAddTaskModal(true, listId)}><Add className='me-3' /> Add More Task</Button>
                             </Box>
                         </Box>
                     </Box>
