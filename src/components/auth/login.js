@@ -8,7 +8,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useDispatch, useSelector } from 'react-redux';
 import { handleUserLogin } from '@/redux/action/userActions';
 
-const Login = ({ handleFormSwitch }) => {
+const Login = ({ handleFormSwitch, isAdmin }) => {
     const { message, error, user } = useSelector(state => state.userReducer)
     const dispatch = useDispatch()
     const router = useRouter()

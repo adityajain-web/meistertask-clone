@@ -10,5 +10,6 @@ export { default as Column } from './layout/dashboard/column'
 export { default as EditDashboardModal } from './modals/EditDashboardModal'
 export { default as AddTaskModal } from './modals/addTaskModal'
 export { default as TaskDetailModal } from './modals/taskDetailModal'
+export { default as TaskDeleteConfirmationModal } from './modals/taskDeleteConfirmationModal'
 
 export { default as BoardListCard } from './cards/boardListCard'

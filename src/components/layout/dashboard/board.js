@@ -3,14 +3,17 @@ import { Box } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Column from './column'
-import { AddTaskModal, TaskDetailModal } from '@/components'
+import { AddTaskModal, TaskDeleteConfirmationModal, TaskDetailModal } from '@/components'
 import { DragDropContext } from 'react-beautiful-dnd'
 import { toast } from 'react-toastify'
 
 const Board = () => {
+    const [taskToBeDelete, setTaskToBeTask] = useState(null)
+    const [openTaskDeleteConfirmationModal, setOpenTaskDeleteConfirmationModal] = useState(false)
     const [openTaskDetailModal, setOpenTaskDetailModal] = useState(false)
     const [openAddTaskModal, setOpenAddTaskModal] = useState(false)
     const [openTaskModalListId, setOpenTaskModalListId] = useState("")
+    const [taskDetails, setTaskDetails] = useState(null)
     const dispatch = useDispatch()
     const { columns, message, error } = useSelector(state => state.dashboardReducer)
 
@@ -94,10 +97,21 @@ const Board = () => {
         }
     }, [message, error])
 
-    const handleOpenTaskDetailModal = (s, listId, taskId) => {
+    const handleOpenTaskDetailModal = (s, listId, task, loggedUser) => {
         setOpenTaskDetailModal(s)
+        setTaskDetails({ listId, task, loggedUser })
     }
 
+    const handleDeleteTask = (listId, taskId) => {
+        setOpenTaskDetailModal(false)
+        setOpenTaskDeleteConfirmationModal(true)
+        setTaskToBeTask({ listId, taskId })
+    }
+
+    const handleTaskDeleteSuccess = () => {
+        FetchColumnOnTaskAddSuccess()
+        setOpenTaskDeleteConfirmationModal(false)
+    }
 
     return (
         <>
@@ -126,6 +140,15 @@ const Board = () => {
             <TaskDetailModal
                 handleOpenTaskDetailModal={handleOpenTaskDetailModal}
                 openTaskDetailModal={openTaskDetailModal}
+                taskDetails={taskDetails}
+                handleDeleteTask={handleDeleteTask}
+                FetchColumnOnTaskAddSuccess={FetchColumnOnTaskAddSuccess}
+            />
+            <TaskDeleteConfirmationModal
+                openTaskDeleteConfirmationModal={openTaskDeleteConfirmationModal}
+                setOpenTaskDeleteConfirmationModal={setOpenTaskDeleteConfirmationModal}
+                taskToBeDelete={taskToBeDelete}
+                handleTaskDeleteSuccess={handleTaskDeleteSuccess}
             />
         </>
     )

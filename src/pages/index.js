@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { handleGetDataFromToken, handleGetUserData } from '@/redux/action/userActions';
 import { Board, Column, EditDashboardModal, Layout } from '@/components';
 import { Box, Container } from '@mui/material';
+import { Head } from '@/sections';
 
 
 const index = ({ authToken }) => {
@@ -30,6 +31,7 @@ const index = ({ authToken }) => {
 
   return (
     <>
+      <Head title="Dashboard | Task" />
       <Layout handleOpenEditDashboard={handleOpenEditDashboard} />
       <section className='dashboard-main'>
         <Container maxWidth="xxl" className='dashboard-container'>

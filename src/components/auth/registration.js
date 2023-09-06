@@ -7,7 +7,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useDispatch, useSelector } from 'react-redux';
 import { registerUser } from '@/redux/action/userActions';
 
-const Register = ({ handleFormSwitch }) => {
+const Register = ({ handleFormSwitch, isAdmin }) => {
     const dispatch = useDispatch()
     const { message, error, user } = useSelector(state => state.userReducer)
 
@@ -25,7 +25,12 @@ const Register = ({ handleFormSwitch }) => {
     });
 
     const onSubmit = async (data) => {
-        dispatch(registerUser(data))
+        if (isAdmin) {
+            const newData = { ...data, isAdmin: true }
+            dispatch(registerUser(newData))
+        } else {
+            dispatch(registerUser(data))
+        }
     }
 
     useEffect(() => {

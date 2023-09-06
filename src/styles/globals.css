@@ -228,7 +228,8 @@ p {
 }
 
 .MuiDialog-container .MuiDialog-paper {
-  height: 550px;
+  min-height: 100px;
+  max-height: 550px;
 }
 
 .Toastify__toast-container--top-right {
@@ -252,6 +253,11 @@ p {
 
 .dashboard-task-card {
   background-color: #090909 !important;
+}
+
+.table--border {
+  border: 1px solid #6e6e6e40;
+  padding: 1rem;
 }
 
 @media only screen and (max-width: 600px) {

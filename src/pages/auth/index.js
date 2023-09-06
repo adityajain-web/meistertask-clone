@@ -28,7 +28,7 @@ const Auth = ({ authToken }) => {
                                             <img src={Logo.src} className='img-fluid auth-logo' />
                                         </Box>
                                         {
-                                            switchForm === "reg" ? <Registration handleFormSwitch={handleFormSwitch} /> : <Login handleFormSwitch={handleFormSwitch} />
+                                            switchForm === "reg" ? <Registration handleFormSwitch={handleFormSwitch} isAdmin={false} /> : <Login handleFormSwitch={handleFormSwitch} isAdmin={false} />
                                         }
                                     </Box>
                                 </CardContent>

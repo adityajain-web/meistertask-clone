@@ -44,7 +44,6 @@ const AddTaskModal = ({ openAddTaskModal, openTaskModalListId, FetchColumnOnTask
                     assignBy: user._id,
                     listId: openTaskModalListId
                 };
-
                 dispatch(handleAddTask(newTask));
             }
         }

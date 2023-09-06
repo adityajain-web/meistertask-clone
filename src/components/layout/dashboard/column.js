@@ -2,8 +2,10 @@ import { Add, Circle } from '@mui/icons-material'
 import { Box, Button, Card, CardContent, Chip, Divider, Paper, Typography } from '@mui/material'
 import React from 'react'
 import { Draggable, Droppable } from 'react-beautiful-dnd'
+import { useSelector } from 'react-redux'
 
 const Column = ({ title, color, taskCount, listId, tasks, handleOpenAddTaskModal, handleOpenTaskDetailModal }) => {
+    const { user: loggedUser } = useSelector(state => state.userReducer)
     return (
         <>
             <Card className='shadow-none dashboard-column'>
@@ -29,7 +31,7 @@ const Column = ({ title, color, taskCount, listId, tasks, handleOpenAddTaskModal
                                                         {...provided.dragHandleProps}
                                                         component={Paper}
                                                         className='shadow-lg dashboard-task-card'
-                                                        onClick={() => handleOpenTaskDetailModal(true, listId, t._id)}
+                                                        onClick={() => handleOpenTaskDetailModal(true, listId, t, loggedUser)}
                                                     >
                                                         <Typography variant='h5' className='text-white'>{t.taskName}</Typography>
                                                     </Box>

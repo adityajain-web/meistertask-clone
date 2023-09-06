@@ -15,6 +15,11 @@ const attachmentSchema = new mongoose.Schema({
     type: String
 });
 
+const subtaskSchema = new mongoose.Schema({
+    task: String,
+    done: Boolean
+});
+
 const taskSchema = new mongoose.Schema({
     taskName: {
         type: String,
@@ -24,7 +29,10 @@ const taskSchema = new mongoose.Schema({
         type: String,
     },
     dueDate: {
-        type: Date,
+        type: Number,
+        set: function (date) {
+            return new Date(date).getTime();
+        },
     },
     attachment: [attachmentSchema],
     description: {
@@ -35,7 +43,8 @@ const taskSchema = new mongoose.Schema({
     },
     listId: {
         type: String
-    }
+    },
+    subtasks: [subtaskSchema]
 });
 
 const listSchema = new mongoose.Schema({
